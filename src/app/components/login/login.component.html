@@ -1,0 +1,54 @@
+<nav>
+  <!--<mat-toolbar>-->
+  <!--  <mat-toolbar-row>-->
+  <!--    <button mat-button>Dashboard</button>-->
+  <!--&lt;!&ndash;    <img src="assets/images/HabittMain.png" alt="Habitt Company Logo" id="logo">&ndash;&gt;-->
+  <!--  </mat-toolbar-row>-->
+  <!--</mat-toolbar>-->
+</nav>
+<main>
+  <article>
+    <div class="login-card">
+      <p class="c-name">Welcome to Habitt!</p>
+      <p class="subText">Customise your Habitts...</p>
+      <span id="hr"></span>
+      <form action="submit">
+        <mat-form-field [appearance]="APP.inputFieldAppearance">
+          <mat-label>Email</mat-label>
+          <input email id="email" matInput name="email" required type="email">
+          <span class="material-icons" matSuffix>email</span>
+        </mat-form-field>
+        <!--        <mat-hint>-->
+        <!--          <span class="header">Enter a valid Email!</span>-->
+        <!--        </mat-hint>-->
+        <mat-form-field [appearance]="APP.inputFieldAppearance">
+          <mat-label>Password</mat-label>
+          <input id="password" matInput name="password" required type="password">
+          <span class="material-icons" matSuffix>visibility</span>
+          <span class="material-icons" matSuffix>visibility_off</span>
+        </mat-form-field>
+        <mat-hint>
+          <span class="header">You password must contain:</span>
+          <ul>
+            <li><span class="material-icons">check_circle</span><span class="material-icons">unpublished</span>At-least
+              1 Lower-case letter
+            </li>
+            <li><span class="material-icons">check_circle</span><span class="material-icons">unpublished</span>At-least
+              1 Upper-case letter
+            </li>
+            <li><span class="material-icons">check_circle</span><span class="material-icons">unpublished</span>At-least
+              1 Number
+            </li>
+            <li><span class="material-icons">check_circle</span><span class="material-icons">unpublished</span>At-least
+              1 Special Character (!@#$%^&*)
+            </li>
+          </ul>
+        </mat-hint>
+        <span id="signupText">
+          <a href="#">New member? Start a new Habitt.</a>
+        </span>
+        <button mat-raised-button type="submit">SIGN IN</button>
+      </form>
+    </div>
+  </article>
+</main>

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  $menu-background: #04CC8E;
+  $online: #00FF0A;
+  $offline: #D32F2F;
+  $warn: #FFD700;
+  $background-dark: #09141F;
+
+  --peach: #ececeb;
+  --menu-background: #04CC8E;
+  --online: #00FF0A;
+  --offline: #D32F2F;
+  --warn: #FFD700;
+  --background-dark: #09141F;
+}
+
+button[mat-raised-button] {
+  background-color: var(--dark);
+  color: var(--light);
+}
