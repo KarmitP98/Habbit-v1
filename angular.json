@@ -54,8 +54,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -125,6 +125,10 @@
               "devServerTarget": "Habbit-v1:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -4,17 +4,17 @@
   <p id="hr"></p>
 
 
-  <form *ngIf="this.step === 1">
+  <form #form1="ngForm" *ngIf="this.step === 1">
     <mat-form-field [appearance]="this.APP.inputFieldAppearance" [hideRequiredMarker]="this.APP.hideRequiredMarker">
       <mat-label>Email</mat-label>
       <input [(ngModel)]="this.email" email matInput name="email" required type="email">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
-    <button (click)="this.step = 2" mat-raised-button type="submit">Register</button>
+    <button (click)="verifyEmail()" [disabled]="form1.invalid" mat-raised-button type="submit">Register</button>
   </form>
 
 
-  <form *ngIf="this.step === 2">
+  <form #form2="ngForm" (ngSubmit)="signUpWithEmail()" *ngIf="this.step === 2">
     <mat-form-field [appearance]="this.APP.inputFieldAppearance" [hideRequiredMarker]="this.APP.hideRequiredMarker">
       <mat-label>Full Name</mat-label>
       <input [(ngModel)]="this.fullName" matInput name="fullName" placeholder="Mat Patt" required type="text">
@@ -67,8 +67,8 @@
       Password does not match!
     </mat-error>
 
-    <button mat-raised-button type="submit">REGISTER</button>
-    <button (click)="this.step = 1" id="back" mat-raised-button type="button">BACK</button>
+    <button [disabled]="form2.invalid" mat-raised-button type="submit">REGISTER</button>
+    <button (click)="this.step = 1;form2.resetForm()" id="back" mat-raised-button type="reset">BACK</button>
 
   </form>
 

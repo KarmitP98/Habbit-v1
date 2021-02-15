@@ -17,6 +17,13 @@ import {LoginFormComponent} from './components/login/login-form/login-form.compo
 import {RegisterFormComponent} from './components/login/register-form/register-form.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {LineLoaderComponent} from './components/shared/line-loader/line-loader.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment.prod';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {ToolbarComponent} from './components/toolbar/toolbar.component';
+import {HomeComponent} from './components/dashboard/home/home.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,11 @@ import {LineLoaderComponent} from './components/shared/line-loader/line-loader.c
     LoginFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    LineLoaderComponent
+    LineLoaderComponent,
+    DashboardComponent,
+    ToolbarComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,9 @@ import {LineLoaderComponent} from './components/shared/line-loader/line-loader.c
     MatCheckboxModule,
     MatToolbarModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

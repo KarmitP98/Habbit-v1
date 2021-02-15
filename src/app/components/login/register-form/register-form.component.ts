@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {APPEARANCE} from '../../../shared/constants';
+import {UserModel} from '../../../shared/models';
+import {AuthService} from '../../../services/auth.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -26,7 +29,8 @@ export class RegisterFormComponent implements OnInit {
     {cond: 'Between 6 to 18 characters.', match: false},
   ];
 
-  constructor() {
+  constructor(private authService: AuthService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -44,4 +48,14 @@ export class RegisterFormComponent implements OnInit {
     this.matchCases[4].match = this.password.length > 6 && this.password.length < 18;
   }
 
+  signUpWithEmail() {
+    const user: UserModel = {email: this.email, name: this.fullName, password: this.password, phone: this.phoneNumber, uId: ''};
+    console.log(user);
+
+    this.authService.signUpWithEmail(user);
+  }
+
+  verifyEmail() {
+    this.step = 2;
+  }
 }
