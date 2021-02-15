@@ -1,0 +1,118 @@
+.login-form {
+  width: 400px;
+
+  display: flex;
+  position: relative;
+
+  flex-direction: column;
+}
+
+.c-name {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.subText {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#hr {
+  width: 100%;
+
+  border: 1px solid lightgray;
+  border-radius: 10px;
+
+  margin: 0 0 24px 0;
+}
+
+form {
+  display: flex;
+
+  width: 100%;
+
+  flex-flow: column wrap;
+
+  justify-content: center;
+  align-items: center;
+
+  mat-form-field {
+    width: 90%;
+  }
+
+  mat-hint {
+    width: fit-content;
+
+    justify-self: center;
+    align-self: center;
+
+    padding: 0 0 24px 0;
+
+    span.header {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    ul {
+      list-style-type: none;
+
+      li {
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        color: darkgrey;
+
+        margin: 4px 0;
+
+        span.material-icons {
+          font-size: 14px;
+          padding: 0 4px;
+          content: "unpublished";
+        }
+
+        &.valid {
+          color: var(--success);
+          text-decoration: line-through;
+        }
+
+        &.invalid {
+          color: var(--danger);
+
+
+        }
+      }
+    }
+  }
+
+  #signupText {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 0 0 24px 0;
+
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--success);
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+  button[type="submit"] {
+
+    position: relative;
+
+    width: 90%;
+    background-color: var(--success);
+    font-weight: 600;
+  }
+
+}

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {APPEARANCE} from '../../shared/constants';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +7,12 @@ import {APPEARANCE} from '../../shared/constants';
 })
 export class LoginComponent implements OnInit {
 
-  APP = APPEARANCE;
 
   constructor() {
   }
 
   ngOnInit(): void {
   }
+
 
 }
