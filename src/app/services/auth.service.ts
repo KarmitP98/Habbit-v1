@@ -27,7 +27,6 @@ export class AuthService {
         localStorage.setItem('CID', result.user?.uid as string);
         this.router.navigate(['dashboard']);
 
-
       })
       .catch(reason => {
         console.error(reason.message);

@@ -25,7 +25,8 @@ import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {HomeComponent} from './components/dashboard/home/home.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {MatCardModule} from '@angular/material/card';
-import {CompanyCardsComponent} from './components/company-cards/company-cards.component';
+import {CompanyCardComponent} from './components/dashboard/home/company-cards/company-card/company-card.component';
+import {CompanyCardsComponent} from './components/dashboard/home/company-cards/company-cards.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {CompanyCardsComponent} from './components/company-cards/company-cards.co
     ToolbarComponent,
     HomeComponent,
     PageNotFoundComponent,
+    CompanyCardComponent,
     CompanyCardsComponent
   ],
   imports: [
