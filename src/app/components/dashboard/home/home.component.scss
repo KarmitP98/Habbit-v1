@@ -1,0 +1,80 @@
+* {
+  font-family: 'Varela Round', sans-serif;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+
+  width: 70%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  margin: 0 auto;
+
+  flex-flow: row wrap;
+
+  //background-color: var(--peach);
+
+}
+
+section.companies {
+  position: relative;
+  display: flex;
+
+  width: 100%;
+  height: fit-content;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  flex-flow: column wrap;
+
+  padding: 5% 5%;
+
+
+  .title {
+    font-size: 48px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
+
+    text-transform: uppercase;
+  }
+
+  .subText {
+    font-size: 14px;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    color: darkgrey;
+  }
+
+  .cards {
+    position: relative;
+    display: flex;
+
+    flex-flow: wrap row;
+
+    width: 100%;
+    height: available;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 0;
+
+
+  }
+}
+
+#hr {
+  width: 100%;
+
+  border: 1px solid darkgrey;
+  border-radius: 50%;
+}
+
+

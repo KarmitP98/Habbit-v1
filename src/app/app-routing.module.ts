@@ -22,7 +22,8 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent}
     ]
   },
-  {path: '**', component: PageNotFoundComponent}
+  {path: '**', pathMatch: 'full', redirectTo: '404'},
+  {path: '404', component: PageNotFoundComponent}
 ];
 
 @NgModule({

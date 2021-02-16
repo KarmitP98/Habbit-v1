@@ -24,6 +24,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {HomeComponent} from './components/dashboard/home/home.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {MatCardModule} from '@angular/material/card';
+import {CompanyCardsComponent} from './components/company-cards/company-cards.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
     DashboardComponent,
     ToolbarComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CompanyCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
     MatIconModule,
     MatProgressBarModule,
     MatMenuModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
