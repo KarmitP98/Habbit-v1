@@ -16,40 +16,21 @@ export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return new Promise(resolve => {
-      const sub = this.afa.authState
-        .subscribe((value) => {
-          if (value) {
-            sub.unsubscribe();
-            console.log("Value Exists");
-            resolve(true);
-          } else {
-            sub.unsubscribe();
-            console.log("Value Exists Not");
-            // resolve(this.router.navigate(["login"]));
-            resolve(true);
-          }
-        });
-    });
+    return this.getUser()?.length > 0 ? true : this.router.navigate(['/login']);
+
 
   }
 
   canDeactivate(component: any, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return new Promise(resolve => {
-      const sub = this.afa.authState
-        .subscribe((value) => {
-          if (value) {
-            sub.unsubscribe();
-            resolve(this.router.navigate(["/", 'dashboard']));
-          } else {
-            sub.unsubscribe();
-            resolve(true);
-          }
-        });
-    });
+    return this.getUser()?.length === 0;
 
+  }
+
+  getUser(): string {
+    console.log(localStorage.getItem('CID') as string);
+    return localStorage.getItem('CID') as string;
   }
 
 }

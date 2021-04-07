@@ -13,7 +13,8 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class AuthService {
 
-  loginAuth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  // Loading subject to maintain current state of the process.
+  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private fireAuth: AngularFireAuth,
               private userService: UserService,
@@ -21,26 +22,45 @@ export class AuthService {
               private router: Router) {
   }
 
+  /**
+   * Authenticate the user using email and password.
+   * Navigate to the home page once user is authenticated.
+   * Display error if user cannot be authenticated.
+   * @param email
+   * @param password
+   */
   loginWithEmail(email: string, password: string) {
-    this.loginAuth.next(true);
+    this.loading.next(true);
     this.fireAuth.signInWithEmailAndPassword(email, password)
       .then((result: UserCredential) => {
 
-        // @ts-ignore
-        localStorage.setItem("CID", result.user.uid as string);
-        this.router.navigate(["dashboard"]);
+        localStorage.setItem("CID", JSON.stringify(result?.user?.uid));
+        console.log(result.user?.uid);
+        this.router.navigate(["/home"])
+          .then(() => {
+            console.log("User has successfully logged in.");
+          })
+          .catch((e) => {
+            console.error(e.message);
+          });
 
       })
       .catch(reason => {
         console.error(reason.message);
       })
       .finally(() => {
-        this.loginAuth.next(false);
+        this.loading.next(false);
       });
   }
 
+  /**
+   * Signup a new user using email, password.
+   * Create a new user field in the database.
+   * Navigate to 'home' page.
+   * @param user
+   */
   signUpWithEmail(user: UserModel) {
-    this.loginAuth.next(true);
+    this.loading.next(true);
     if (typeof user.email === "string" && typeof user.password === "string") {
       this.fireAuth.createUserWithEmailAndPassword(user.email, user.password)
         .then((result: UserCredential) => {
@@ -50,23 +70,28 @@ export class AuthService {
           this.userService.addNewUser(user);
 
           localStorage.setItem("CID", user.uId as string);
-          this.router.navigate(["dashboard"]);
+          this.router.navigate(["/home"]);
 
         })
         .catch(reason => {
           console.error(reason.message);
         })
         .finally(() => {
-          this.loginAuth.next(false);
+          this.loading.next(false);
         });
     }
   }
 
+  /**
+   * Logout current user.
+   * Remove 'CID' value from the localstorage and navigate to 'login' page.
+   */
   logOut(): void {
     this.fireAuth.signOut()
-      .then((result) => {
+      .then(() => {
         console.log("The User has been logged out!");
-        this.router.navigate([""]);
+        localStorage.removeItem('CID');
+        this.router.navigate(["/login"]);
       })
       .catch((error) => {
         console.log(error.message);

@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  background: url("~src/assets/images/woman-laptop.jpg") no-repeat center;
+  background-size: cover;
+
+}
+
+mat-card {
+  width: 30%;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,28 @@
+<body>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Welcome back</mat-card-title>
+    <mat-card-subtitle>Continue with your habitt</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="login()" class="w-100" method="post">
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="email" id="email" matInput name="email" placeholder="john.doe@gmail.com" required
+               type="email">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="w-100">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" id="password" matInput name="password" placeholder="******" required
+               type="password">
+      </mat-form-field>
+      <br>
+      <p>Don't have an account? <a routerLink="/signup">Register</a></p>
+      <br>
+      <button color="primary" mat-raised-button style="width: 100%;" type="submit">Sign In</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+</body>

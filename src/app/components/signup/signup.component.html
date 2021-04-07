@@ -1,0 +1,43 @@
+<body>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Welcome to Habitt</mat-card-title>
+    <mat-card-subtitle>Register to use our services</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field [appearance]="app.inputFieldAppearance">
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="name" id="name" matInput name="name" placeholder="John Doe" required type="text">
+      </mat-form-field>
+      <br>
+      <mat-form-field [appearance]="app.inputFieldAppearance">
+        <mat-label>Phone</mat-label>
+        <input [(ngModel)]="phone" id="phone" matInput name="phone" placeholder="+1-123-456-7890" required type="text">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="email" email id="email" matInput name="email" placeholder="john.doe@gmail.com" required
+               type="email">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" id="password" matInput name="password" placeholder="******" required
+               type="password">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Re-Enter Password</mat-label>
+        <input [(ngModel)]="rePassword" id="rePassword" matInput name="rePassword" placeholder="******" required
+               type="password">
+      </mat-form-field>
+      <br>
+      <p>Already have an account? <a routerLink="/login">Login to your account</a></p>
+      <br>
+      <button color="primary" mat-raised-button type="submit">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+</body>
