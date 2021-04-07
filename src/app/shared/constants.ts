@@ -1,6 +1,6 @@
-import {MatFormFieldAppearance} from '@angular/material/form-field';
+import {MatFormFieldAppearance} from "@angular/material/form-field";
 
 export const APPEARANCE: { inputFieldAppearance: MatFormFieldAppearance, hideRequiredMarker: boolean } = {
-  inputFieldAppearance: 'outline',
+  inputFieldAppearance: "outline",
   hideRequiredMarker: true
 };

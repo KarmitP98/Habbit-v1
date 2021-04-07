@@ -1,16 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {AuthService} from '../../services/auth.service';
-import {Subscription} from 'rxjs';
+import {Component, OnDestroy, OnInit} from "@angular/core";
+import {UserService} from "../../services/user.service";
+import {AuthService} from "../../services/auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  selector: "app-toolbar",
+  templateUrl: "./toolbar.component.html",
+  styleUrls: ["./toolbar.component.scss"]
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
 
-  email: string | undefined = '';
+  email: string | undefined = "";
   sub: Subscription | undefined;
 
   menuOpened = false;
@@ -20,14 +20,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const cid = localStorage.getItem('CID') as string;
+    const cid = localStorage.getItem("CID") as string;
 
-    this.sub = this.userService.fetchUser('uId', '==', cid)
+    this.sub = this.userService.fetchUser("uId", "==", cid)
       .subscribe(value => {
         if (value) {
           this.email = value[0].email;
         }
       });
+
   }
 
   ngOnDestroy(): void {

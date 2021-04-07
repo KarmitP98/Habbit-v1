@@ -13,7 +13,7 @@ body {
   font-family: 'Varela Round', sans-serif;
 }
 
-* {
+*, p, a, h1, h2, h3, h4, h5, button, ul, li {
   font-family: 'Varela Round', sans-serif;
 }
 
@@ -32,7 +32,12 @@ body {
   --background-dark: #09141F;
 }
 
-//button[mat-raised-button] {
-//  background-color: var(--dark);
-//  color: var(--light);
-//}
+.card {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 2em;
+}

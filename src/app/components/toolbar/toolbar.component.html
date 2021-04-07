@@ -13,14 +13,10 @@
     <span id="inner-spacer"></span>
 
     <button (click)="this.menuOpened = !this.menuOpened" [matMenuTriggerFor]="menu" id="menuButton" mat-button>
-      <span id="email">{{this.email}}</span>
+      <span id="email">{{this.email?.toString()}}</span>
       <mat-icon [class.menuOpen]="menuOpened">expand_more</mat-icon>
     </button>
     <mat-menu #menu="matMenu" (closed)="this.menuOpened = false" xPosition="before" yPosition="below">
-      <button mat-menu-item>
-        <mat-icon>account_circle</mat-icon>
-        PROFILE
-      </button>
       <button (click)="this.authService.logOut()" mat-menu-item>
         <mat-icon color="warn">power_settings_new</mat-icon>
         LOG OUT

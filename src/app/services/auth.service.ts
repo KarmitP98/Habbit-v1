@@ -1,14 +1,15 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {UserModel} from '../shared/models';
-import firebase from 'firebase';
-import {UserService} from './user.service';
-import {Router} from '@angular/router';
+import {Injectable} from "@angular/core";
+import {BehaviorSubject} from "rxjs";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {UserModel} from "../shared/models";
+import firebase from "firebase";
+import {UserService} from "./user.service";
+import {Router} from "@angular/router";
+import {AngularFirestore} from "@angular/fire/firestore";
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
 
@@ -16,6 +17,7 @@ export class AuthService {
 
   constructor(private fireAuth: AngularFireAuth,
               private userService: UserService,
+              private firestore: AngularFirestore,
               private router: Router) {
   }
 
@@ -24,8 +26,9 @@ export class AuthService {
     this.fireAuth.signInWithEmailAndPassword(email, password)
       .then((result: UserCredential) => {
 
-        localStorage.setItem('CID', result.user?.uid as string);
-        this.router.navigate(['dashboard']);
+        // @ts-ignore
+        localStorage.setItem("CID", result.user.uid as string);
+        this.router.navigate(["dashboard"]);
 
       })
       .catch(reason => {
@@ -38,7 +41,7 @@ export class AuthService {
 
   signUpWithEmail(user: UserModel) {
     this.loginAuth.next(true);
-    if (typeof user.email === 'string' && typeof user.password === 'string') {
+    if (typeof user.email === "string" && typeof user.password === "string") {
       this.fireAuth.createUserWithEmailAndPassword(user.email, user.password)
         .then((result: UserCredential) => {
           console.log(result);
@@ -46,8 +49,8 @@ export class AuthService {
           user.uId = result.user?.uid;
           this.userService.addNewUser(user);
 
-          localStorage.setItem('CID', user.uId as string);
-          this.router.navigate(['dashboard']);
+          localStorage.setItem("CID", user.uId as string);
+          this.router.navigate(["dashboard"]);
 
         })
         .catch(reason => {
@@ -62,8 +65,8 @@ export class AuthService {
   logOut(): void {
     this.fireAuth.signOut()
       .then((result) => {
-        console.log('The User has been logged out!');
-        this.router.navigate(['']);
+        console.log("The User has been logged out!");
+        this.router.navigate([""]);
       })
       .catch((error) => {
         console.log(error.message);
