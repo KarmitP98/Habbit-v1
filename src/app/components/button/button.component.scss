@@ -1,0 +1,36 @@
+button {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em 2em;
+
+  border: none;
+  border-radius: .25em;
+
+  font-weight: 600;
+
+  background: linear-gradient(to bottom right, rgba(64, 64, 64, 1), rgba(38, 38, 38, 1), rgba(10, 11, 10, 1));
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, .15);
+
+  &.default {
+    color: white;
+  }
+
+  &.success {
+    color: var(--success);
+  }
+
+  &.danger {
+    color: var(--danger);
+  }
+
+  &.warning {
+    color: var(--warning);
+  }
+
+  &.light {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(192, 192, 192, 1));
+  }
+}

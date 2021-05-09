@@ -29,6 +29,11 @@ import {SideNavComponent} from './components/side-nav/side-nav.component';
 import {MatRippleModule} from "@angular/material/core";
 import {HomeComponent} from './components/home/home.component';
 import {TopNavComponent} from './components/top-nav/top-nav.component';
+import {DataComponent} from './components/tabs/data/data.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {ButtonComponent} from './components/button/button.component';
+import {CardComponent} from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,10 @@ import {TopNavComponent} from './components/top-nav/top-nav.component';
     SignupComponent,
     SideNavComponent,
     HomeComponent,
-    TopNavComponent
+    TopNavComponent,
+    DataComponent,
+    ButtonComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +70,8 @@ import {TopNavComponent} from './components/top-nav/top-nav.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatInputModule,
     MatRippleModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

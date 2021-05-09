@@ -20,16 +20,17 @@ html, body {
 //}
 
 :root {
-  $menu-background: #04CC8E;
+  $menu-background: #ace9c2;
   $online: #00FF0A;
   $offline: #D32F2F;
   $warn: #FFD700;
   $background-dark: #09141F;
 
   --peach: #ececeb;
-  --primary: #04CC8E;
+  --primary: rgb(39, 174, 96);
   --online: #00FF0A;
   --offline: #D32F2F;
   --warn: #FFD700;
+  --background: rgba(172, 233, 194, 0.1);
   --background-dark: #09141F;
 }

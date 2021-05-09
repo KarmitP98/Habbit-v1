@@ -20,9 +20,18 @@
       <br>
       <p>Don't have an account? <a routerLink="/signup">Register</a></p>
       <br>
-      <button color="primary" mat-raised-button style="width: 100%;" type="submit">Sign In</button>
+
+      <app-button [arguments]="'Some Text'"
+                  [onChange]="handleOnChange"
+                  [onClick]="handleOnClick"
+                  [type]="Type.success"
+                  style="width: 100%">
+        Hello World
+      </app-button>
+      <!--      <button color="primary" mat-raised-button style="width: 100%;" type="submit">Sign In</button>-->
 
     </form>
+
   </mat-card-content>
 </mat-card>
 </body>
