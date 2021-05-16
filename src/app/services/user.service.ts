@@ -1,36 +1,28 @@
-import {Injectable} from "@angular/core";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {UserModel} from "../shared/models";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserModel } from '../shared/models';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable( {
+               providedIn: 'root',
+             } )
 export class UserService {
 
 
-  constructor(private firestore: AngularFirestore) {
+  constructor( private firestore: AngularFirestore ) {
   }
 
   /**
    * PUT Request: Add a new yser to the database and store the user email to the emails collection
    * @param user : UserModel
    */
-  addNewUser(user: UserModel) {
-    this.firestore.collection<UserModel>("users")
-      .doc(user.uId)
-      .set(user)
-      .then((result) => {
-        this.firestore.collection("emails")
-          .doc(user.email)
-          .set(user.email)
-          .then(value => {
-            console.log("A new user has been added!");
-          });
-      })
-      .catch(reason => {
-        console.error(reason.message);
-      });
+  addNewUser( user: UserModel ) {
+    this.firestore.collection<UserModel>( 'users' )
+        .doc( user.uId )
+        .set( user )
+        .catch( reason => {
+          console.error( reason.message );
+        } );
   }
 
   /**
@@ -41,13 +33,14 @@ export class UserService {
    * @param condition : string (Query Condition)
    * @param value : any (Value for Query to match)
    */
-  fetchUser(field?: string, condition?: any, value?: any): Observable<UserModel[]> {
+  fetchUser( field?: string, condition?: '<' | '<=' | '==' | '!=' | '>=' | '>' | 'array-contains' | 'in' | 'array-contains-any' | 'not-in', value?: any ):
+    Observable<UserModel[]> {
 
-    if (field) {
-      return this.firestore.collection<UserModel>("users", ref => ref.where(field, condition, value)).valueChanges();
+    if (field && condition && value) {
+      return this.firestore.collection<UserModel>( 'users', ref => ref.where( field, condition, value ) ).valueChanges();
     }
 
-    return this.firestore.collection<UserModel>("users").valueChanges();
+    return this.firestore.collection<UserModel>( 'users' ).valueChanges();
   }
 
   /**
@@ -55,10 +48,10 @@ export class UserService {
    * Update the user with newUser value.
    * @param newUser : UserModel
    */
-  updateUser(newUser: UserModel) {
-    this.firestore.collection<UserModel>("users")
-      .doc(newUser.uId)
-      .update(newUser);
+  updateUser( newUser: UserModel ) {
+    this.firestore.collection<UserModel>( 'users' )
+        .doc( newUser.uId )
+        .update( newUser );
   }
 
   /**
@@ -67,15 +60,15 @@ export class UserService {
    * Then remove the associated email entity from emails collection.
    * @param user: UserModel
    */
-  deleteUser(user: UserModel) {
-    this.firestore.collection<UserModel>("users")
-      .doc(user.uId)
-      .delete()
-      .then(value => {
-        this.firestore.collection<string>("emails", ref => ref.where("email", "==", user.email))
-          .doc()
-          .delete();
-      });
+  deleteUser( user: UserModel ) {
+    this.firestore.collection<UserModel>( 'users' )
+        .doc( user.uId )
+        .delete()
+        .then( value => {
+          this.firestore.collection<string>( 'emails', ref => ref.where( 'email', '==', user.email ) )
+              .doc()
+              .delete();
+        } );
   }
 
 }

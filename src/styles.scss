@@ -1,36 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import '~src/theme/custom-card';
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~src/theme/CustomButton';
+@import '~src/theme/Custom';
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   font-family: 'Varela Round', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
+  font-family: 'Roboto', sans-serif;
   width: 100%;
-  height: 100%;
-  font-family: 'Varela Round', sans-serif;
+  height: fit-content;
+  background-color: var(--bs-white);
 }
 
-//*, p, a, h1, h2, h3, h4, h5, button, ul, li {
-//}
-
 :root {
-  $menu-background: #ace9c2;
+  $menu-background: #ACE9C2;
   $online: #00FF0A;
   $offline: #D32F2F;
   $warn: #FFD700;
   $background-dark: #09141F;
 
-  --peach: #ececeb;
+  --peach: #ECECEB;
   --primary: rgb(39, 174, 96);
   --online: #00FF0A;
   --offline: #D32F2F;
   --warn: #FFD700;
   --background: rgba(172, 233, 194, 0.1);
   --background-dark: #09141F;
+
+  --background-gradient: linear-gradient(to bottom right, rgba(64, 64, 64, 1), rgba(38, 38, 38, 1), rgba(10, 11, 10, 1));
 }

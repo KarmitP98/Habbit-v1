@@ -1,4 +1,6 @@
-<body>
-<app-side-nav *ngIf="fireAuth.user|async"></app-side-nav>
-<router-outlet></router-outlet>
-</body>
+<app-left-side-bar *ngIf="fireAuth.user|async"></app-left-side-bar>
+<app-right-side-bar *ngIf="fireAuth.user|async"></app-right-side-bar>
+<app-top-bar *ngIf="fireAuth.user|async"></app-top-bar>
+<div class="routed">
+  <router-outlet></router-outlet>
+</div>

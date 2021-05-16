@@ -1,37 +1,71 @@
-<body>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Welcome back</mat-card-title>
-    <mat-card-subtitle>Continue with your habitt</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <form (ngSubmit)="login()" class="w-100" method="post">
-      <mat-form-field class="w-100">
-        <mat-label>Email</mat-label>
-        <input [(ngModel)]="email" id="email" matInput name="email" placeholder="john.doe@gmail.com" required
-               type="email">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="w-100">
-        <mat-label>Password</mat-label>
-        <input [(ngModel)]="password" id="password" matInput name="password" placeholder="******" required
-               type="password">
-      </mat-form-field>
-      <br>
-      <p>Don't have an account? <a routerLink="/signup">Register</a></p>
-      <br>
+<div class="login-page">
+  <div class="company-image">
+    <img alt="Company Logo" src="assets/images/Habitt_Compact_Colored.png">
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Welcome back</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="login()" class="w-100" method="post">
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input
+            [(ngModel)]="email"
+            id="email"
+            matInput
+            name="email"
+            placeholder="john.doe@gmail.com"
+            required
+            type="email"
+          >
+        </mat-form-field>
+        <br>
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input
+            [(ngModel)]="password"
+            id="password"
+            matInput
+            name="password"
+            placeholder="******"
+            required
+            type="password"
+          >
+        </mat-form-field>
+        <br>
+        <p>Don't have an account? <a routerLink="/signup">Register</a></p>
+        <br>
 
-      <app-button [arguments]="'Some Text'"
-                  [onChange]="handleOnChange"
-                  [onClick]="handleOnClick"
-                  [type]="Type.success"
-                  style="width: 100%">
-        Hello World
-      </app-button>
-      <!--      <button color="primary" mat-raised-button style="width: 100%;" type="submit">Sign In</button>-->
-
-    </form>
-
-  </mat-card-content>
-</mat-card>
-</body>
+        <button
+          class="w-100"
+          mat-raised-button
+          type="submit"
+        >
+          SIGN IN
+        </button>
+        <div class="other-methods">
+          <button
+            (click)="loginWith('google')" color="warn"
+            mat-raised-button
+            type="button"
+          >
+            Google
+          </button>
+          <button
+            color="primary" mat-raised-button
+            type="button"
+          >
+            Facebook
+          </button>
+          <button
+            color="accent" mat-raised-button
+            type="button"
+          >
+            Github
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

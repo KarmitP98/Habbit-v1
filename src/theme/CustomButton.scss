@@ -1,0 +1,40 @@
+.c-button {
+  font-size: 1.1em;
+  font-weight: 500;
+
+  position: relative;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+  padding: 0.5em 2em;
+
+  color: #4B4B4A;
+
+  border: none;
+
+  border-radius: 1000px;
+
+  background: var(--bs-white);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+  gap: 0.5em;
+
+
+  &.success {
+    color: var(--bs-success);
+    box-shadow: 1px 1px 4px 0 rgba(#198754, 0.2);
+  }
+
+  &.danger {
+    color: var(--bs-danger);
+    box-shadow: 1px 1px 4px 0 rgba(#dc3545, 0.2);
+  }
+
+  &.active {
+    transition: all 0.2s ease-in-out;
+    color: white;
+    background-color: var(--primary);
+  }
+}

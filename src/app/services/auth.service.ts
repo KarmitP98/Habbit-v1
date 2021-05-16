@@ -1,25 +1,25 @@
-import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
-import {AngularFireAuth} from "@angular/fire/auth";
-import {UserModel} from "../shared/models";
-import firebase from "firebase";
-import {UserService} from "./user.service";
-import {Router} from "@angular/router";
-import {AngularFirestore} from "@angular/fire/firestore";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UserModel } from '../shared/models';
+import firebase from 'firebase';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 import UserCredential = firebase.auth.UserCredential;
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable( {
+               providedIn: 'root',
+             } )
 export class AuthService {
 
   // Loading subject to maintain current state of the process.
-  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>( false );
 
-  constructor(private fireAuth: AngularFireAuth,
-              private userService: UserService,
-              private firestore: AngularFirestore,
-              private router: Router) {
+  constructor( private fireAuth: AngularFireAuth,
+               private userService: UserService,
+               private firestore: AngularFirestore,
+               private router: Router ) {
   }
 
   /**
@@ -29,28 +29,28 @@ export class AuthService {
    * @param email
    * @param password
    */
-  loginWithEmail(email: string, password: string) {
-    this.loading.next(true);
-    this.fireAuth.signInWithEmailAndPassword(email, password)
-      .then((result: UserCredential) => {
+  loginWithEmail( email: string, password: string ) {
+    this.loading.next( true );
+    this.fireAuth.signInWithEmailAndPassword( email, password )
+        .then( ( result: UserCredential ) => {
 
-        localStorage.setItem("CID", JSON.stringify(result?.user?.uid));
-        console.log(result.user?.uid);
-        this.router.navigate(["/home"])
-          .then(() => {
-            console.log("User has successfully logged in.");
-          })
-          .catch((e) => {
-            console.error(e.message);
-          });
+          localStorage.setItem( 'id', JSON.stringify( result?.user?.uid ) );
+          console.log( result.user?.uid );
+          this.router.navigate( [ '/home' ] )
+              .then( () => {
+                console.log( 'User has successfully logged in.' );
+              } )
+              .catch( ( e ) => {
+                console.error( e.message );
+              } );
 
-      })
-      .catch(reason => {
-        console.error(reason.message);
-      })
-      .finally(() => {
-        this.loading.next(false);
-      });
+        } )
+        .catch( reason => {
+          console.error( reason.message );
+        } )
+        .finally( () => {
+          this.loading.next( false );
+        } );
   }
 
   /**
@@ -59,43 +59,91 @@ export class AuthService {
    * Navigate to 'home' page.
    * @param user
    */
-  signUpWithEmail(user: UserModel) {
-    this.loading.next(true);
-    if (typeof user.email === "string" && typeof user.password === "string") {
-      this.fireAuth.createUserWithEmailAndPassword(user.email, user.password)
-        .then((result: UserCredential) => {
-          console.log(result);
+  signUpWithEmail( user: UserModel ) {
+    this.loading.next( true );
+    if (typeof user.email === 'string' && typeof user.password === 'string') {
+      this.fireAuth.createUserWithEmailAndPassword( user.email, user.password )
+          .then( ( result: UserCredential ) => {
+            console.log( result );
 
-          user.uId = result.user?.uid;
-          this.userService.addNewUser(user);
+            // @ts-ignore
+            user.uId = result.user?.uid;
+            this.userService.addNewUser( user );
 
-          localStorage.setItem("CID", user.uId as string);
-          this.router.navigate(["/home"]);
+            localStorage.setItem( 'id', user.uId as string );
+            this.router.navigate( [ '/home' ] );
 
-        })
-        .catch(reason => {
-          console.error(reason.message);
-        })
-        .finally(() => {
-          this.loading.next(false);
-        });
+          } )
+          .catch( reason => {
+            console.error( reason.message );
+          } )
+          .finally( () => {
+            this.loading.next( false );
+          } );
     }
   }
 
   /**
    * Logout current user.
-   * Remove 'CID' value from the localstorage and navigate to 'login' page.
+   * Remove 'id' value from the localstorage and navigate to 'login' page.
    */
   logOut(): void {
     this.fireAuth.signOut()
-      .then(() => {
-        console.log("The User has been logged out!");
-        localStorage.removeItem('CID');
-        this.router.navigate(["/login"]);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+        .then( () => {
+          console.log( 'The User has been logged out!' );
+          localStorage.removeItem( 'id' );
+          this.router.navigate( [ '/login' ] );
+        } )
+        .catch( ( error ) => {
+          console.log( error.message );
+        } );
+  }
+
+  /**
+   * Login with @param provider
+   * @param provider
+   */
+  loginWithProvider( provider: string ) {
+    let pro: any;
+    switch (provider) {
+      case 'google':
+        pro = new firebase.auth.GoogleAuthProvider();
+        break;
+      case 'github':
+        pro = new firebase.auth.GithubAuthProvider();
+        break;
+      case 'facebook':
+        pro = new firebase.auth.FacebookAuthProvider();
+        break;
+      default:
+        pro = new firebase.auth.EmailAuthProvider();
+    }
+    this.fireAuth.signInWithPopup( pro )
+        .then( value => {
+          if (value) {
+            // @ts-ignore
+            const { user: { email: email, uid: uId, displayName: name, phoneNumber: phone } } = value;
+
+            if (value.additionalUserInfo?.isNewUser) {
+              // @ts-ignore
+              this.userService.addNewUser( { email, uId, name, phone, password: '' } );
+            }
+            if (value.user) {
+              localStorage.setItem( 'id', JSON.stringify( uId ) );
+              this.router.navigate( [ '/home' ] )
+                  .then( () => {
+                    console.log( 'User has successfully logged in.' );
+                  } )
+                  .catch( ( e ) => {
+                    console.error( e.message );
+                  } );
+            }
+          }
+        } )
+        .catch( ( reason: { errorCode: any; message: any; } ) => {
+          console.log( reason.errorCode );
+          console.log( reason.message );
+        } );
   }
 
 }
