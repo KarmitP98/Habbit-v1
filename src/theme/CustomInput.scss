@@ -1,0 +1,26 @@
+.input {
+  outline: none;
+  border: none;
+  background: none;
+
+  border-radius: 500px;
+  padding: .5em 1em;
+
+  font-size: 1em;
+  font-weight: 500;
+  color: #4B4B4A;
+
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+  &:focus, &:active, &:focus-within {
+    outline: none;
+    border: none;
+  }
+;
+
+  &::placeholder {
+    font-size: 1em;
+    font-weight: 500;
+    color: #4B4B4A;
+  }
+}
