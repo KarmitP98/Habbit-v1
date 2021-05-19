@@ -1,4 +1,4 @@
-.c-button, .c-icon-button {
+.c-button, .c-icon-button, .c-action-button {
   font-size: 1.1em;
   font-weight: 500;
 
@@ -45,4 +45,8 @@
 
 .c-icon-button {
   padding: 0.5em;
+}
+
+.c-action-button {
+  border-radius: 0.5em;
 }

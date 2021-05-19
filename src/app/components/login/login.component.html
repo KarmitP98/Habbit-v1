@@ -2,17 +2,17 @@
   <div class="company-image">
     <img alt="Company Logo" src="assets/images/Habitt_Compact_Colored.png">
   </div>
-  <mat-card>
+  <mat-card class = 'w-50'>
     <mat-card-header>
-      <mat-card-title>Welcome back</mat-card-title>
+      <mat-card-title>Welcome back!</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form (ngSubmit)="login()" class="w-100" method="post">
-        <mat-form-field class="w-100">
+      <form (ngSubmit) = 'login()' class = 'w-100' method = 'post'>
+        <mat-form-field class = 'w-100'>
           <mat-label>Email</mat-label>
           <input
-            [(ngModel)]="email"
-            id="email"
+            [(ngModel)] = 'email'
+            id = 'email'
             matInput
             name="email"
             placeholder="john.doe@gmail.com"
@@ -51,18 +51,6 @@
             type="button"
           >
             Google
-          </button>
-          <button
-            color="primary" mat-raised-button
-            type="button"
-          >
-            Facebook
-          </button>
-          <button
-            color="accent" mat-raised-button
-            type="button"
-          >
-            Github
           </button>
         </div>
       </form>

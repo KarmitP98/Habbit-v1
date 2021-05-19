@@ -1,22 +1,29 @@
-<div class="left-side-bar">
-  <div class="left-section">
-    <div class="vertical-divider right"></div>
-    <div class="section-title">
+<div class = 'left-side-bar'>
+  <div class = 'left-section'>
+    <div class = 'vertical-divider right'></div>
+    <div class = 'section-title'>
       <img
-        alt="Company Logo"
-        class="w-25"
-        src="assets/images/Habitt_Compact_Colored.png"
+        alt = 'Company Logo'
+        class = 'w-25'
+        src = 'assets/images/Habitt_Compact_Colored.png'
       >
     </div>
-    <div class="section-body">
+    <div class = 'section-body'>
       <button
-        (click)="goTo(i)"
-        *ngFor="let button of buttons;let i = index;"
-        [class.active]="button.active"
-        class="c-button animate"
+        (click) = 'goTo(i)'
+        *ngFor = 'let button of buttons;let i = index;'
+        [class.active] = 'button.active'
+        class = 'c-button animate'
       >
         <mat-icon>{{button.icon}}</mat-icon>
         {{button.name}}
+      </button>
+      <button
+        (click) = 'logOut()'
+        class = 'c-button danger'
+      >
+        Logout
+        <mat-icon>logout</mat-icon>
       </button>
     </div>
   </div>

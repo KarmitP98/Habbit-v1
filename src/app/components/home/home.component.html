@@ -1,3 +1,72 @@
-<div class="home">
-  Home Section
+<div class = 'home'>
+  <div class = 'c-card'>
+    <div class = 'c-header'>
+      <div class = 'c-title'>Rewards</div>
+    </div>
+    <div class = 'c-body'>
+      <img alt = 'Rewards' class = 'rewards w-50' src = 'assets/Rewards.png'>
+    </div>
+    <div class = 'c-actions end'>
+      <!--      <button class='c-button c-action-button success'>Save</button>-->
+      <div class = 'c-action'>
+        Save
+        <mat-icon>chevron_right</mat-icon>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class = 'c-card'>
+    <div class = 'c-header'>
+      <div class = 'c-title'>Habitt Score</div>
+    </div>
+    <div class = 'c-body'>
+      <img alt = 'Rewards' class = 'rewards' src = 'assets/Score.png'>
+    </div>
+  </div>
+  <div class = 'c-card'>
+    <div class = 'c-header'>
+      <div class = 'c-title'>Upcoming</div>
+    </div>
+    <div class = 'c-body'>
+      <div class = 'line h2 fw-bold'>$61.99</div>
+      <div class = 'line text-black-50 pb-2'>April 21, 2021</div>
+      <img alt = 'Rogers' class = 'rewards w-50' src = 'assets/svg/Rogers_logo.svg'>
+    </div>
+  </div>
+  <div class = 'c-card'>
+    <div class = 'c-header'>
+      <div class = 'c-title'>Transactions</div>
+    </div>
+    <div class = 'c-body'>
+      <mat-table [dataSource] = 'dataSource' class = 'w-75'>
+        <!-- Position Column -->
+        <ng-container matColumnDef = 'title'>
+          <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
+          <mat-cell *matCellDef = 'let element'> {{element.title}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef = 'amount'>
+          <mat-header-cell *matHeaderCellDef> Amount</mat-header-cell>
+          <mat-cell *matCellDef = 'let element'> {{element.amount}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef = 'reward'>
+          <mat-header-cell *matHeaderCellDef> Reward</mat-header-cell>
+          <mat-cell *matCellDef = 'let element' class = 'text-success'> {{element.reward}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef = 'date'>
+          <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
+          <mat-cell *matCellDef = 'let element'> {{element.date}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef = 'displayedColumns'></mat-header-row>
+        <mat-row *matRowDef = 'let row; columns: displayedColumns;'></mat-row>
+      </mat-table>
+      <mat-paginator #paginator [pageSizeOptions] = '[5, 10, 20]' showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
 </div>
