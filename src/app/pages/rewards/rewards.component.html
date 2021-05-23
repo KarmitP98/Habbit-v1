@@ -1,0 +1,15 @@
+<div class = 'rewards-page'>
+  <div class = 'c-card'>
+    <div class = 'c-header'>
+      <div class = 'c-title'>Total Rewards</div>
+    </div>
+    <div class = 'c-body'>
+      <img alt = 'Rewards' class = 'rewards w-50' src = '../../../assets/Rewards.png'>
+    </div>
+  </div>
+  <div class = 'rewards-list'>
+    <app-reward-card
+      *ngFor = 'let reward of rewards'
+      [data] = '{name: reward.name, currencyType: reward.currencyType, amount: reward.amount, imageUrl: reward.imageUrl }'></app-reward-card>
+  </div>
+</div>

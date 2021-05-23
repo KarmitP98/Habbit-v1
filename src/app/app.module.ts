@@ -29,6 +29,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { RewardCardComponent } from './components/reward-card/reward-card.component';
 import { HabittScorePageComponent } from './pages/habitt-score-page/habitt-score-page.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { RewardsComponent } from './pages/rewards/rewards.component';
 
 @NgModule( {
              declarations: [
@@ -43,6 +44,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
                RewardCardComponent,
                HabittScorePageComponent,
                SnackbarComponent,
+               RewardsComponent,
              ],
              imports: [
                BrowserModule,

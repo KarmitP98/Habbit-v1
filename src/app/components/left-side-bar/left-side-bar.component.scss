@@ -31,7 +31,7 @@
 
   .left-section {
     @include flex-column;
-    padding: 1em;
+    padding: 2em;
 
     .section-title {
       @include fcc;

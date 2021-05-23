@@ -1,0 +1,25 @@
+.rewards-page{
+  display: flex;
+
+  flex-flow: column;
+
+  width: 100%;
+  height: fit-content;
+
+  padding: 3em;
+
+  gap: 2em;
+
+  .rewards-list{
+    position: relative;
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+
+    grid-gap: 1em;
+
+    width: 100%;
+    height: fit-content;
+  }
+}

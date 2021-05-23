@@ -8,14 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
 export class RewardCardComponent implements OnInit {
 
   @Input() data!: {
-    imageUrl: string,
-    name: string,
-    amount: number,
-    currencyType: '$',
-    date: Date,
-    linkURL: '',
-    actions: any,
-    showAction: true
+    imageUrl?: string,
+    name?: string,
+    amount?: number,
+    currencyType?: '$',
+    date?: Date,
+    linkURL?: '',
+    actions?: any,
+    showAction?: true
   };
 
   constructor() { }

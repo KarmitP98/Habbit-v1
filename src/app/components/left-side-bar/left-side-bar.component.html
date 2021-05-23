@@ -12,9 +12,9 @@
       <button
         (click) = 'goTo(i)'
         *ngFor = 'let button of buttons;let i = index;'
-        [class.active] = 'button.active'
         class = 'c-button animate'
         [routerLink]='button.link'
+        [routerLinkActive]='"active"'
       >
         <mat-icon>{{button.icon}}</mat-icon>
         {{button.name}}

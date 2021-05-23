@@ -1,9 +1,10 @@
 <div class='reward-card'>
   <div class = 'reward-image'>
-    <img [src] = 'data.imageUrl' alt = 'Reward Logo'>
+    <img [src] = 'data.imageUrl' alt = 'Reward'>
   </div>
-  <div class = 'reward-title'>
+  <div class = 'reward-content'>
     {{data.name}}
+    <div class='amount'>+{{data.currencyType}}{{data.amount}}</div>
   </div>
   <div class = 'reward-actions' *ngIf='data.showAction'>
     {{data.actions}}

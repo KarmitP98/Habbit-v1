@@ -2,7 +2,7 @@
   position: fixed;
   display: flex;
 
-  gap: 2em;
+  gap: 1em;
 
   width: fit-content;
   height: fit-content;
@@ -19,13 +19,22 @@
 
   z-index: 100;
 
-  padding: 0.5em 1em;
+  padding: 0.5em;
 
-  border-radius: 0.25em;
+  border-radius: 0.5em;
 
   box-shadow: var(--box-shadow-black);
 
   font-weight: bold;
+
+  .snackbar-image{
+    width: 2em;
+    height: 2em;
+
+    box-shadow: var(--box-shadow-black);
+
+    border-radius: 0.25em;
+  }
 
   &.warning{
     color: var(--bs-warning)

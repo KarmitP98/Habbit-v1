@@ -12,7 +12,7 @@ export class LeftSideBarComponent implements OnInit {
     {name: 'Home', icon: 'home', active: true, link: 'home'},
     // {name: 'Profile', icon: 'person', active: false, link: 'home'},
     {name: 'Score', icon: 'score', active: false, link: 'score'},
-    {name: 'Rewards', icon: 'verified', active: false, link: 'home'},
+    {name: 'Rewards', icon: 'verified', active: false, link: 'rewards'},
   ];
 
   constructor(public as: AuthService) { }
