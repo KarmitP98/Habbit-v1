@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {THEME} from '../shared/constants';
 import { UserModel } from '../shared/models';
 import firebase from 'firebase';
+import {SnackbarService} from './snackbar.service';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -19,7 +21,8 @@ export class AuthService {
   constructor( private fireAuth: AngularFireAuth,
                private userService: UserService,
                private firestore: AngularFirestore,
-               private router: Router ) {
+               private router: Router,
+               private ss: SnackbarService) {
   }
 
   /**
@@ -38,15 +41,15 @@ export class AuthService {
           console.log( result.user?.uid );
           this.router.navigate( [ '/home' ] )
               .then( () => {
-                console.log( 'User has successfully logged in.' );
+                this.ss.showSnackbar({show: true, title: 'User has successfully logged in.', theme: THEME.primary});
               } )
-              .catch( ( e ) => {
-                console.error( e.message );
+              .catch( ( error ) => {
+                this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
               } );
 
         } )
-        .catch( reason => {
-          console.error( reason.message );
+        .catch( error => {
+          this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
         } )
         .finally( () => {
           this.loading.next( false );
@@ -64,7 +67,8 @@ export class AuthService {
     if (typeof user.email === 'string' && typeof user.password === 'string') {
       this.fireAuth.createUserWithEmailAndPassword( user.email, user.password )
           .then( ( result: UserCredential ) => {
-            console.log( result );
+
+            this.ss.showSnackbar({show: true, title: 'New User has signed up.', theme: THEME.primary});
 
             // @ts-ignore
             user.uId = result.user?.uid;
@@ -74,8 +78,8 @@ export class AuthService {
             this.router.navigate( [ '/home' ] );
 
           } )
-          .catch( reason => {
-            console.error( reason.message );
+          .catch( error => {
+            this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
           } )
           .finally( () => {
             this.loading.next( false );
@@ -90,12 +94,13 @@ export class AuthService {
   logOut(): void {
     this.fireAuth.signOut()
         .then( () => {
-          console.log( 'The User has been logged out!' );
+          this.ss.showSnackbar({show: true, title: 'User has logged out!', theme: THEME.primary});
+
           localStorage.removeItem( 'id' );
           this.router.navigate( [ '/login' ] );
         } )
         .catch( ( error ) => {
-          console.log( error.message );
+          this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
         } );
   }
 
@@ -132,17 +137,16 @@ export class AuthService {
               localStorage.setItem( 'id', JSON.stringify( uId ) );
               this.router.navigate( [ '/home' ] )
                   .then( () => {
-                    console.log( 'User has successfully logged in.' );
+                    this.ss.showSnackbar({show: true, title: 'User has successfully logged in.', theme: THEME.primary});
                   } )
-                  .catch( ( e ) => {
-                    console.error( e.message );
+                  .catch( ( error ) => {
+                    this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
                   } );
             }
           }
         } )
-        .catch( ( reason: { errorCode: any; message: any; } ) => {
-          console.log( reason.errorCode );
-          console.log( reason.message );
+        .catch( ( error ) => {
+          this.ss.showSnackbar({show: true, title: error.message, theme: THEME.danger});
         } );
   }
 

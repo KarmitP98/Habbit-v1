@@ -1,0 +1,12 @@
+<div
+  class = 'snackbar'
+  [ngClass] = '(ss.snackbarSubject|async).theme'
+  *ngIf = '(ss.snackbarSubject|async).show'
+  [@load]>
+  <div class = 'snackbar-action'>
+    <mat-icon style = 'cursor: pointer' (click) = 'ss.snackbarSubject.next({show: false})'>cancel</mat-icon>
+  </div>
+  <div class = 'snackbar-content'>
+    {{(ss.snackbarSubject|async).title}}
+  </div>
+</div>

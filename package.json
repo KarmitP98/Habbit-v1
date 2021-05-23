@@ -2,13 +2,13 @@
   "name": "habbitv1",
   "version": "0.0.2",
   "scripts": {
-    "ng" : "ng",
-    "start" : "ng serve --host 0.0.0.0",
-    "build" : "ng build --prod",
-    "test" : "ng test",
-    "lint" : "ng lint",
-    "e2e" : "ng e2e",
-    "build&deploy" : "ng build --prod && firebase deploy"
+    "ng": "ng",
+    "start": "ng serve --host 0.0.0.0",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "build&deploy": "ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {

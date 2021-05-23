@@ -14,7 +14,7 @@
 
   border: none;
 
-  border-radius: 1000px;
+  border-radius: 0.25em;
 
   background: var(--bs-white);
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
@@ -29,7 +29,8 @@
   }
 
   &.danger {
-    color: var(--bs-danger);
+    background-color: var(--bs-danger);
+    color: white;
     box-shadow: 1px 1px 4px 0 rgba(#dc3545, 0.2);
   }
 
@@ -45,6 +46,7 @@
 
 .c-icon-button {
   padding: 0.5em;
+  border-radius: 50%;
 }
 
 .c-action-button {

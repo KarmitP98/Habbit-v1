@@ -1,0 +1,46 @@
+.snackbar{
+  position: fixed;
+  display: flex;
+
+  gap: 2em;
+
+  width: fit-content;
+  height: fit-content;
+
+  flex-flow: row-reverse;
+
+  justify-content: center;
+  align-items: center;
+
+  bottom: 2em;
+  left: 2em;
+
+  background: white;
+
+  z-index: 100;
+
+  padding: 0.5em 1em;
+
+  border-radius: 0.25em;
+
+  box-shadow: var(--box-shadow-black);
+
+  font-weight: bold;
+
+  &.warning{
+    color: var(--bs-warning)
+  }
+
+  &.danger{
+    color: var(--bs-danger)
+  }
+
+  &.progress{
+    color: var(--bs-primary)
+  }
+
+  &.primary{
+    color: var(--primary)
+  }
+
+}

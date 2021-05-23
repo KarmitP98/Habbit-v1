@@ -17,15 +17,18 @@ import { environment } from '../environments/environment.prod';
 import { MatMenuModule } from '@angular/material/menu';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MatCardModule } from '@angular/material/card';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { MatRippleModule } from '@angular/material/core';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LeftSideBarComponent } from './components/left-side-bar/left-side-bar.component';
 import { RightSideBarComponent } from './components/right-side-bar/right-side-bar.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { RewardCardComponent } from './components/reward-card/reward-card.component';
+import { HabittScorePageComponent } from './pages/habitt-score-page/habitt-score-page.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule( {
              declarations: [
@@ -37,6 +40,9 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
                LeftSideBarComponent,
                RightSideBarComponent,
                TopBarComponent,
+               RewardCardComponent,
+               HabittScorePageComponent,
+               SnackbarComponent,
              ],
              imports: [
                BrowserModule,

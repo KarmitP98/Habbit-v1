@@ -9,10 +9,10 @@ import {AuthService} from '../../services/auth.service';
 export class LeftSideBarComponent implements OnInit {
 
   buttons = [
-    {name: 'Home', icon: 'home', active: true},
-    { name: 'Profile', icon: 'person', active: false },
-    { name: 'Cards', icon: 'style', active: false },
-    { name: 'Information', icon: 'info', active: false },
+    {name: 'Home', icon: 'home', active: true, link: 'home'},
+    // {name: 'Profile', icon: 'person', active: false, link: 'home'},
+    {name: 'Score', icon: 'score', active: false, link: 'score'},
+    {name: 'Rewards', icon: 'verified', active: false, link: 'home'},
   ];
 
   constructor(public as: AuthService) { }

@@ -1,4 +1,4 @@
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import {MatFormFieldAppearance} from '@angular/material/form-field';
 
 export const APPEARANCE: { inputFieldAppearance: MatFormFieldAppearance, hideRequiredMarker: boolean } = {
   inputFieldAppearance: 'standard',
@@ -12,3 +12,11 @@ export enum TYPE {
   warning = 'warning',
   light = 'light',
 }
+
+export const THEME = {
+  danger: 'danger',
+  warning: 'warning',
+  progress: 'progress',
+  primary: 'primary'
+};
+

@@ -4,8 +4,8 @@
     <div class = 'section-title'>
       <img
         alt = 'Company Logo'
-        class = 'w-25'
-        src = 'assets/images/Habitt_Compact_Colored.png'
+        class = 'w-50'
+        src = 'assets/images/Habitt_Full_Colored.png'
       >
     </div>
     <div class = 'section-body'>
@@ -14,6 +14,7 @@
         *ngFor = 'let button of buttons;let i = index;'
         [class.active] = 'button.active'
         class = 'c-button animate'
+        [routerLink]='button.link'
       >
         <mat-icon>{{button.icon}}</mat-icon>
         {{button.name}}

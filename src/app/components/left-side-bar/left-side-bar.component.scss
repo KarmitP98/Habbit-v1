@@ -43,8 +43,11 @@
       padding: 1em;
       gap: 2em;
 
+      min-width: 50%;
+      width: fit-content;
+
       button.c-button {
-        width: 50%;
+        width: 100%;
       }
     }
   }
