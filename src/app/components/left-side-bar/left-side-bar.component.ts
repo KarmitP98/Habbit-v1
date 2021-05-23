@@ -11,6 +11,7 @@ export class LeftSideBarComponent implements OnInit {
   buttons = [
     {name: 'Home', icon: 'home', active: true, link: 'home'},
     // {name: 'Profile', icon: 'person', active: false, link: 'home'},
+    {name: 'Pay Bills', icon: 'payments', active: false, link: 'pay-bills'},
     {name: 'Score', icon: 'score', active: false, link: 'score'},
     {name: 'Rewards', icon: 'verified', active: false, link: 'rewards'},
   ];

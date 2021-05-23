@@ -12,9 +12,8 @@
 
   background: var(--bs-white);
 
-  flex-grow: 1;
-
   width: 100%;
+  min-width: 200px;
   height: 100%;
 
   .c-header {
@@ -34,6 +33,7 @@
 
   .c-body {
     display: flex;
+    position: relative;
 
     flex-flow: column;
 
